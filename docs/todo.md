@@ -22,3 +22,4 @@
 	[] Simple animated transitions between views  
 	[] Enable navigation using the browser back/forward buttons  
 	[] Push to Github pages  
+	- running ng build doesn't check the npm dependencies - my README.md says to do npm install but there may be a more cli-friendly approach
