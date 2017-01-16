@@ -9,3 +9,4 @@ Node.js / NPM
 ## Serve Locally  
 Run `ng build`  
 Run `node server.js`  
+Go to localhost:3000
