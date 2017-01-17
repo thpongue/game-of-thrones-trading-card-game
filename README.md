@@ -6,10 +6,21 @@ Node.js / NPM
 ## Install dependencies  
 `npm install`  
   
-## Serve Locally  
-Run `ng build`  
-Run `node server.js`  
-Go to localhost:3000
+## Build local
+Run `npm run build-local`
 
-## Test
+## Build Prod
+Run `npm run build-prod`
 
+## Serve local
+Run `npm run serve-local`
+
+## Serve Prod
+Run `npm run serve-prod`
+
+## Unit Test
+Run `npm run test-unit`
+
+## E2E Test
+Run `npm run serve-local`
+Then once the server is up and running `npm run test-e2e`

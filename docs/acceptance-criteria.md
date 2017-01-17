@@ -5,6 +5,6 @@
 [] App should be styled with a modern card-based design, using current CSS layout approach  
 [] Clean coding style  
 [] Support for CRUD operations.  
-[x] Application is tested and built with a single command  
+[-] Application is tested and built with a single command - e2e requires 2 commands currently  
 [] Simple animated transitions between views  
 [] Enable navigation using the browser back/forward buttons  
