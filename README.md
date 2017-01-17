@@ -10,3 +10,6 @@ Node.js / NPM
 Run `ng build`  
 Run `node server.js`  
 Go to localhost:3000
+
+## Test
+
