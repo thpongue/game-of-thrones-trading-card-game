@@ -5,10 +5,12 @@
 	[x] base node project - use express  
   
 [-] Iteration 3: e2e MVP   
-	[-] Unstyled card selection page  
+	[x] Create feature files
+	[-] Unstyled card selection page showing 10 cards  
 		- write failing e2e test in protractor  
 	[] Unstyled card details page   
 		- write failing e2e test in protractor  
+	- rename page files to util or helper or somethig more appropriate
   
 [] Unsorted  
 	[] Responsive  
