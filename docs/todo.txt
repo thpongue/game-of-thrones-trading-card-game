@@ -3,12 +3,21 @@
   
 [x] Iteration 2: Back-end template  
 	[x] base node project - use express  
+
+[x] Iteration 3: requirements + outline acceptance tests
+	[x] Create feature files
+	[x] Create complete suite (first draft) of failing Protractor tests based on feature files
   
-[-] Iteration 3: e2e MVP   
-	[-] Unstyled card selection page  
-		- write failing e2e test in protractor  
-	[] Unstyled card details page   
-		- write failing e2e test in protractor  
+[-] Iteration 3: e2e MVP (unstyled) - get all protractor tests passing but will look crap   
+	[-] home.feature
+	[] navigateToCardDetail.feature
+	[] navigateToCardSelection.feature
+	[] tearUpCard.feature
+	[] viewCardDetails.feature
+	[] viewCardSelection.feature
+	- should delete the "Jon Snow" card from my collection has a pretty weak test at the moment - maybe navigate back to the selection view and see that its missing?
+
+[] Iteration 4: complete MVP by adding styles
   
 [] Unsorted  
 	[] Responsive  
