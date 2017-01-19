@@ -12,4 +12,20 @@ export class CardDetail {
   getCharacterName() {
     return element(by.css('#CharacterName')).getText();
   }
+
+  getCharacterAge() {
+    return element(by.css('#CharacterAge')).getText();
+  }
+	
+	getCharacterImageUrl() {
+    return element(by.css('#CharacterImageName')).getText();
+	}
+
+	selectCardSelection() {
+    element(by.css('#CardSelection')).click();
+	}
+
+	selectTearUpCard() {
+    element(by.css('#TearUpCard')).click();
+	}
 }

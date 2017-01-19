@@ -1,4 +1,6 @@
-import { Home, CardSelection, CardDetail } from './app.po';
+import { Home } from './home.po';
+import { CardSelection } from './card_selection.po';
+import { CardDetail } from './card_detail.po';
 
 describe('Game Of Thrones Trading Card Game', function() {
 
@@ -8,70 +10,89 @@ describe('Game Of Thrones Trading Card Game', function() {
 		let page: Home;
 
 		beforeEach(() => {
+			page = new Home();
 			page.navigateTo();
 		});
 
-		it('should redirect me to my card selection', function() {
+		it('Should redirect me to my card selection', function() {
 			expect(page.getHeading()).toEqual('Card Selection');
 		})
 	});
 
-	// Feature; Navigate to card details
-	// Scenario: User selects a card from their card selection to see its details
 	describe('Given: I am viewing my card selection', function() {
 		let page: CardSelection;
 
 		beforeEach(() => {
+			page = new CardSelection();
 			page.navigateTo();
 		});
-
+		
 		describe('When: I select the Jon Snow card', function() {
+			let pageNavigatedTo: CardDetail;
+
 			beforeEach(() => {
+				pageNavigatedTo = new CardDetail();
 				page.selectCard('Jon_Snow');
 			});
 
-			it('should navigate to the card details for 'Jon Snow'', function() {
-				let pageNavigatedTo: CardDetail;
+			it('Should navigate to the card details for "Jon Snow"', function() {
 				expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
 			})
-		});
-	});
+			
+			// Feature: Navigate to card selection
+			// Scenario: User has finished viewing the 'Jon Snow' card and navigates back to their card selection
+			// Given: I am viewing the details of 'Jon Snow'
+			describe('When: I select the "card selection" option', function() {
+				beforeEach(() => {
+					pageNavigatedTo.selectCardSelection();
+				});
 
-	// navigateToCardSelection.feature
+				it('Should navigate to my card selection', function() {
+					expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
+				})
+			});
+			
+			// Feature: Tear up card
+			// Scenario: User doesn't like a particular character and wants to tear up the card 
+			// Given: I am viewing the details of 'Jon Snow'
+			describe('When: I select the "tear up card" option', function() {
+				beforeEach(() => {
+					pageNavigatedTo.selectTearUpCard();
+				});
 
+				it('Should delete the "Jon Snow" card from my collection', function() {
+					expect(pageNavigatedTo.getCharacterName()).toBeNull();
+				})
+			});
 
-	// tearUpCard.feature
+			// Feature: View card details
+			// Scenario: User wants to see one of the cards in detail
+			// Given: I am viewing the details of 'Jon Snow'
+			it('Should show the name: "Jon Snow"', function() {
+				expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
+			})
 
+			it('Should show age: "25"', function() {
+				expect(pageNavigatedTo.getCharacterAge()).toEqual('Jon Snow');
+			})
 
-	// viewCardDetails.feature
-
-
-	// viewCardSelection.feature
-
-
-
-
-	// here
-
-
-	describe('When I navigate to the card selection page url', function() {
-		let page: CardSelection;
-		
-		beforeEach(() => {
-			page.navigateTo('card-selection');
-		});
-
-		it('should show the card selection page', () => {
-			expect(page.getHeading()).toEqual(cardSelectionPageHeading);
-		});
-		
-		// implicitly test that 10 cards are displayed
-		it('should navigate to the card details view when the first card is clicked', function() {
-			let page: CardDetail;
-			page.clickCardByTitle('Jon Snow').then(function() {
-				expect(page.getHeading()).toEqual(cardSelectionPageHeading);
+			it('Should show a large image of Jon Snow', function() {
+				expect(pageNavigatedTo.getCharacterImageUrl()).toEqual('JonSnow.jpg');
 			})
 		});
+		
+		// Feature: View card selection
+		// Scenario: User wants to see all the cards in their selection
+		// Given: I am viewing my card selection
+		it('It Should show All 10 cards', function() {
+			expect(page.getCardCount()).toEqual(10);
+		})
+		
+		it('It Should include a card named: "Jon Snow" with a small image of Jon Snow', function() {
+			var characterName = page.getCharacterNameForCard('Jon Snow');
+			var imageUrl = page.getImageUrlForCard('Jon Snow');
+			expect(characterName).toEqual('Jon Snow');
+			expect(imageUrl).toEqual('JonSnow.jpg');
+		});
 	});
-
 });
