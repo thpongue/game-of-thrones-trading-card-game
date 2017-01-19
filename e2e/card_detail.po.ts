@@ -1,10 +1,6 @@
 import { browser, element, by } from 'protractor';
 
 export class CardDetail {
-  navigateTo() {
-    return browser.get('/card-detail');
-  }
-
   getHeading() {
     return element(by.css('#Heading')).getText();
   }
@@ -18,7 +14,7 @@ export class CardDetail {
   }
 	
 	getCharacterImageUrl() {
-    return element(by.css('#CharacterImageName')).getText();
+    return element(by.css('#CharacterImageUrl')).getText();
 	}
 
 	selectCardSelection() {

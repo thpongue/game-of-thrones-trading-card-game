@@ -2,15 +2,15 @@ import { browser, element, by } from 'protractor';
 
 export class CardSelection {
   navigateTo() {
-    return browser.get('/card-selection');
+    return browser.get('/');
   }
 
-	selectCard(name: String) {
-    element(by.css('#'+name)).click();
+	selectCard(characterName: String) {
+    element(by.css('#'+characterName)).click();
 	}
 
   getHeading() {
-    return element(by.css('#Heading')).getText();
+    return element(by.css('#CardSelectionHeading')).getText();
   }
 	
   getCharacterName() {
@@ -23,10 +23,10 @@ export class CardSelection {
   }
 	
 	getCharacterNameForCard(characterName: String) {
-    return element(by.css('#'+characterName + '#characterName')).getText();
+    return element(by.css('#'+characterName + '.characterName')).getText();
 	}
 
 	getImageUrlForCard(characterName: String) {
-    return element(by.css('#'+characterName + '#imageUrl')).getText();
+    return element(by.css('#'+characterName + '.imageUrl')).getText();
 	}
 }

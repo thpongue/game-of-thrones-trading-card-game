@@ -9,9 +9,9 @@
 	[x] Create complete suite (first draft) of failing Protractor tests based on feature files
   
 [-] Iteration 3: e2e MVP (unstyled) - get all protractor tests passing but will look crap   
-	[-] home.feature
+	[x] home.feature
+	[-] navigateToCardSelection.feature
 	[] navigateToCardDetail.feature
-	[] navigateToCardSelection.feature
 	[] tearUpCard.feature
 	[] viewCardDetails.feature
 	[] viewCardSelection.feature
@@ -22,10 +22,11 @@
 [] Unsorted  
 	[] Responsive  
 	[] Card customisation  
-	[] Tear up card  
 	[] Support for CRUD operations  
 	[] Simple animated transitions between views  
 	[] Enable navigation using the browser back/forward buttons  
 	[] Push to Github pages  
+	[] enable deeplinking by implementing HTML5 pushstate (or just use a HashLocationStrategy)
+		- re-add deep link in card selection page file and re-add navigateTo override in home page file if we implement pushstate and allow for deep linking
 	- swap chrome for phantomjs for unit tests
 	- e2e tests need to be 1 command not 2

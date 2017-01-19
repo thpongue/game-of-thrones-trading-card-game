@@ -2,11 +2,9 @@ import { Home } from './home.po';
 import { CardSelection } from './card_selection.po';
 import { CardDetail } from './card_detail.po';
 
-describe('Game Of Thrones Trading Card Game', function() {
+describe('Game Of Thrones Trading Card Game', () => {
 
-	// Feature: Site root url redirects straight to users card selection
-	// Scenario: User navigates to the site
-	describe('When: I navigate to the root url', function() {
+	describe('When: I navigate to the root url', () => {
 		let page: Home;
 
 		beforeEach(() => {
@@ -14,20 +12,31 @@ describe('Game Of Thrones Trading Card Game', function() {
 			page.navigateTo();
 		});
 
-		it('Should redirect me to my card selection', function() {
+		it('Should redirect me to my card selection', () => {
 			expect(page.getHeading()).toEqual('Card Selection');
 		})
 	});
 
-	describe('Given: I am viewing my card selection', function() {
+	describe('Given: I am viewing my card selection', () => {
 		let page: CardSelection;
 
 		beforeEach(() => {
 			page = new CardSelection();
 			page.navigateTo();
 		});
+
+		it('It Should show All 10 cards', () => {
+			expect(page.getCardCount()).toEqual(10);
+		})
 		
-		describe('When: I select the Jon Snow card', function() {
+		it('It Should include a card named: "Jon Snow" with a small image of Jon Snow', () => {
+			var characterName = page.getCharacterNameForCard('Jon Snow');
+			var imageUrl = page.getImageUrlForCard('Jon Snow');
+			expect(characterName).toEqual('Jon Snow');
+			expect(imageUrl).toEqual('JonSnow.jpg');
+		});
+		
+		describe('When: I select the Jon Snow card', () => {
 			let pageNavigatedTo: CardDetail;
 
 			beforeEach(() => {
@@ -35,64 +44,41 @@ describe('Game Of Thrones Trading Card Game', function() {
 				page.selectCard('Jon_Snow');
 			});
 
-			it('Should navigate to the card details for "Jon Snow"', function() {
+			it('Should navigate to the card details for "Jon Snow"', () => {
 				expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
 			})
+
+			it('Should show the name: "Jon Snow"', () => {
+				expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
+			})
+
+			it('Should show age: "25"', () => {
+				expect(pageNavigatedTo.getCharacterAge()).toEqual('Jon Snow');
+			})
+
+			it('Should show a large image of Jon Snow', () => {
+				expect(pageNavigatedTo.getCharacterImageUrl()).toEqual('JonSnow.jpg');
+			})
 			
-			// Feature: Navigate to card selection
-			// Scenario: User has finished viewing the 'Jon Snow' card and navigates back to their card selection
-			// Given: I am viewing the details of 'Jon Snow'
-			describe('When: I select the "card selection" option', function() {
+			describe('When: I select the "card selection" option', () => {
 				beforeEach(() => {
 					pageNavigatedTo.selectCardSelection();
 				});
 
-				it('Should navigate to my card selection', function() {
+				it('Should navigate to my card selection', () => {
 					expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
 				})
 			});
 			
-			// Feature: Tear up card
-			// Scenario: User doesn't like a particular character and wants to tear up the card 
-			// Given: I am viewing the details of 'Jon Snow'
-			describe('When: I select the "tear up card" option', function() {
+			describe('When: I select the "tear up card" option', () => {
 				beforeEach(() => {
 					pageNavigatedTo.selectTearUpCard();
 				});
 
-				it('Should delete the "Jon Snow" card from my collection', function() {
+				it('Should delete the "Jon Snow" card from my collection', () => {
 					expect(pageNavigatedTo.getCharacterName()).toBeNull();
 				})
 			});
-
-			// Feature: View card details
-			// Scenario: User wants to see one of the cards in detail
-			// Given: I am viewing the details of 'Jon Snow'
-			it('Should show the name: "Jon Snow"', function() {
-				expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
-			})
-
-			it('Should show age: "25"', function() {
-				expect(pageNavigatedTo.getCharacterAge()).toEqual('Jon Snow');
-			})
-
-			it('Should show a large image of Jon Snow', function() {
-				expect(pageNavigatedTo.getCharacterImageUrl()).toEqual('JonSnow.jpg');
-			})
-		});
-		
-		// Feature: View card selection
-		// Scenario: User wants to see all the cards in their selection
-		// Given: I am viewing my card selection
-		it('It Should show All 10 cards', function() {
-			expect(page.getCardCount()).toEqual(10);
-		})
-		
-		it('It Should include a card named: "Jon Snow" with a small image of Jon Snow', function() {
-			var characterName = page.getCharacterNameForCard('Jon Snow');
-			var imageUrl = page.getImageUrlForCard('Jon Snow');
-			expect(characterName).toEqual('Jon Snow');
-			expect(imageUrl).toEqual('JonSnow.jpg');
 		});
 	});
 });
