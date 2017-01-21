@@ -29,11 +29,16 @@ describe('Game Of Thrones Trading Card Game', () => {
 			expect(page.getCardCount()).toEqual(10);
 		})
 		
-		it('It Should include a card named: "Jon Snow" with a small image of Jon Snow', () => {
-			var characterName = page.getCharacterNameForCard('Jon Snow');
-			var imageUrl = page.getImageUrlForCard('Jon Snow');
-			expect(characterName).toEqual('Jon Snow');
-			expect(imageUrl).toEqual('JonSnow.jpg');
+		it('It Should include a card named "Jon Snow"', () => {
+			page.hasCard('Jon Snow').then((val) => {
+				expect(val).toBe(true);
+			})
+		});
+
+		it('It Should include a small image of Jon Snow', () => {
+			page.hasImage('assets/images/jon_snow.jpg').then((val) => {
+				expect(val).toBe(true);
+			})
 		});
 		
 		describe('When: I select the Jon Snow card', () => {

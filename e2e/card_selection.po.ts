@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import { browser, $, $$ } from 'protractor';
 
 export class CardSelection {
   navigateTo() {
@@ -6,27 +6,50 @@ export class CardSelection {
   }
 
 	selectCard(characterName: String) {
-    element(by.css('#'+characterName)).click();
+    $('#'+characterName).click();
 	}
 
   getHeading() {
-    return element(by.css('#CardSelectionHeading')).getText();
+    return $('#Heading').getText();
   }
 	
   getCharacterName() {
-    return element(by.css('#CharacterName')).getText();
+    return $('#CharacterName').getText();
   }
 
-	// TODO
   getCardCount() {
-		return 0;
+		return this.getCardsArray().count();
   }
 	
-	getCharacterNameForCard(characterName: String) {
-    return element(by.css('#'+characterName + '.characterName')).getText();
+	hasCard(characterName: String) {
+		return this.getCardsArray().filter(this.filterByText(characterName)).then(this.isFound())
 	}
 
-	getImageUrlForCard(characterName: String) {
-    return element(by.css('#'+characterName + '.imageUrl')).getText();
+	hasImage(imageUrl: String) {
+		return this.getCardsArray().filter(this.filterByImageUrl(imageUrl)).then(this.isFound());
+	}
+	
+	private getCardsArray() {
+		return $$('#Cards .Card');
+	}
+	
+	private filterByText(matchText) {
+		return (elements) => {
+			return elements.getText().then(text => {
+				return text === matchText;
+			});
+		}
+	}
+
+	private filterByImageUrl(matchText) {
+		return (elements) => {
+			return elements.$$('a[href*="+imageUrl+"]');
+		}
+	}
+	
+	private isFound() {
+		return (elements) => {
+			return elements.length > 0;
+		}
 	}
 }
