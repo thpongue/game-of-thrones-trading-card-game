@@ -25,4 +25,8 @@ describe('CardSelectionComponent', () => {
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have the title "Card Selection"', () => {
+    expect(component.title).toBe('Card Selection');
+  });
 });
