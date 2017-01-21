@@ -4,44 +4,9 @@
 
 <!-- do manually first - simplest way to satisfy the e2e test before refactoring a la Angular2 -->
 <ul id="Cards">
-	<li class="Card">
-		<p>Jon Snow</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO1</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO2</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO3</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO4</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO5</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO6</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO7</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO8</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
-	</li>
-	<li class="Card">
-		<p>TODO9</p>
-		<img src="assets/images/Jon_Snow.jpg" alt="Jon Snow" height="42" width="42"> 
+	<li *ngFor="let datum of data" class="Card">
+		<p>{{datum.name}}</p>
+		<img [src]="datum.imageUrl" alt="datum.name" height="42" width="42"> 
 	</li>
 </ul>
+
