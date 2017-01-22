@@ -5,7 +5,7 @@
 <ul id="Cards">
 	<li *ngFor="let cardData of cardsData" class="Card" [attr.id]="hyphenate(cardData.name)" [routerLink]="['/card-detail']" [queryParams]="{characterName: cardData.name}">
 		<p>{{cardData.name}}</p>
-		<img [src]="cardData.imageUrl" alt="cardData.name" height="42" width="42"> 
+		<img [src]="cardData.imageUrl" alt="cardData.name" height="100" width="100"> 
 	</li>
 </ul>
 

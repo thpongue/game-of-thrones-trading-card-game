@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+	background-color: #25465e;
+	margin: 0px;
+}
+
+h1 {
+	width:100%;
+	background: #0a0a0a;
+	color: #caad2d;
+	margin: 0 auto;
+	padding: 10px 0px;
+	font-family: fantasy;
+	text-align: center;
+}
+
+h2 {
+	width:100%;
+	background: #0a0a0a;
+	color: #caad2d;
+	margin: 0 auto;
+	padding: 10px 0px;
+	font-family: fantasy;
+	text-align: center;
+}
+
+p {
+	font-family: fantasy;
+}

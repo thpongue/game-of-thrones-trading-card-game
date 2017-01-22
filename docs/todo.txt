@@ -18,9 +18,9 @@
 	[] tearUpCard.feature
 		- update this with navigating to the card selection and not seeing it there?
 
-[] Iteration 5: e2e MVP no styles (still unstyled, make real server calls)
-	[] viewCardSelection.feature
-	[] viewCardDetails.feature
+[-] Iteration 5: e2e MVP no styles (still unstyled, make real server calls)
+	[-] viewCardSelection.feature
+	[-] viewCardDetails.feature
 	[] tearUpCard.feature
 
 [] Iteration 6: complete MVP by adding styles
