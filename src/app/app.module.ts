@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CardSelectionComponent } from './card-selection/card-selection.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CardDetailComponent } from './card-detail/card-detail.component';
 
 const ROUTES: Routes = [
   {
@@ -16,13 +17,18 @@ const ROUTES: Routes = [
   {
     path: 'card-selection',
     component: CardSelectionComponent
+  },
+  {
+    path: 'card-detail',
+    component: CardDetailComponent
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardSelectionComponent
+    CardSelectionComponent,
+    CardDetailComponent
   ],
   imports: [
     BrowserModule,

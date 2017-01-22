@@ -6,15 +6,19 @@ export class CardSelection {
   }
 
 	selectCard(characterName: String) {
-    $('#'+characterName).click();
+    return $('#'+characterName).click();
 	}
 
   getHeading() {
-    return $('#Heading').getText();
+    return $('#Heading').getText().then(text => {
+			return text;
+		})
   }
-	
+
   getCharacterName() {
-    return $('#CharacterName').getText();
+    return $('#CharacterName').getText().then(text => {
+			return text;
+		})
   }
 
   getCardCount() {

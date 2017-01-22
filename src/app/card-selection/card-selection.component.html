@@ -2,11 +2,10 @@
   {{title}}
 </h2>
 
-<!-- do manually first - simplest way to satisfy the e2e test before refactoring a la Angular2 -->
 <ul id="Cards">
-	<li *ngFor="let datum of data" class="Card">
-		<p>{{datum.name}}</p>
-		<img [src]="datum.imageUrl" alt="datum.name" height="42" width="42"> 
+	<li *ngFor="let cardData of cardsData" class="Card" [attr.id]="hyphenate(cardData.name)" [routerLink]="['/card-detail']" [queryParams]="{characterName: cardData.name}">
+		<p>{{cardData.name}}</p>
+		<img [src]="cardData.imageUrl" alt="cardData.name" height="42" width="42"> 
 	</li>
 </ul>
 

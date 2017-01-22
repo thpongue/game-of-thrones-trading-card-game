@@ -12,11 +12,11 @@ export class CardSelectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  title = 'Card Selection';
+  title: String = 'Card Selection';
 	
 	// TODO: use real data
 	// TODO: no test - this is temporary
-	data = [
+	cardsData : any[] = [
 		{name: 'Jon Snow', imageUrl: 'assets/images/jon_snow.jpg'},
 		{name: 'TODO1', imageUrl: 'assets/images/jon_snow.jpg'},
 		{name: 'TODO2', imageUrl: 'assets/images/jon_snow.jpg'},
@@ -29,4 +29,7 @@ export class CardSelectionComponent implements OnInit {
 		{name: 'TODO9', imageUrl: 'assets/images/jon_snow.jpg'}
 	];
 
+	hyphenate(value: String) : String {
+		return value.replace(/ /g, '-');
+	}
 }

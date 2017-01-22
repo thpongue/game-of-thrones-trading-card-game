@@ -1,27 +1,35 @@
-import { browser, element, by } from 'protractor';
+import { $ } from 'protractor';
 
 export class CardDetail {
   getHeading() {
-    return element(by.css('#Heading')).getText();
+    return $('#Heading').getText().then(text => {
+			return text;
+		})
   }
 
   getCharacterName() {
-    return element(by.css('#CharacterName')).getText();
+    return $('#CharacterName').getText().then(text => {
+			return text;
+		})
   }
 
   getCharacterAge() {
-    return element(by.css('#CharacterAge')).getText();
+    return $('#CharacterAge').getText().then(text => {
+			return text;
+		})
   }
 	
 	getCharacterImageUrl() {
-    return element(by.css('#CharacterImageUrl')).getText();
+    return $('#CharacterImageUrl').getText().then(text => {
+			return text;
+		})
 	}
 
 	selectCardSelection() {
-    element(by.css('#CardSelection')).click();
+    return $('#CardSelection').click();
 	}
 
 	selectTearUpCard() {
-    element(by.css('#TearUpCard')).click();
+    return $('#TearUpCard').click();
 	}
 }
