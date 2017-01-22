@@ -12,11 +12,11 @@
 	[x] home.feature
 	[x] viewCardSelection.feature
 	[x] navigateToCardDetail.feature
-	[-] navigateToCardSelection.feature
+	[-] viewCardDetails.feature
+		- should delete the "Jon Snow" card from my collection has a pretty weak test at the moment - maybe navigate back to the selection view and see that its missing?
+	[] navigateToCardSelection.feature
 	[] tearUpCard.feature
 		- update this with navigating to the card selection and not seeing it there?
-	[] viewCardDetails.feature
-	- should delete the "Jon Snow" card from my collection has a pretty weak test at the moment - maybe navigate back to the selection view and see that its missing?
 
 [] Iteration 5: e2e MVP no styles (still unstyled, make real server calls)
 	[] viewCardSelection.feature
