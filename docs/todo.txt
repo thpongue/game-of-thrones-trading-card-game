@@ -8,7 +8,7 @@
 	[x] Create feature files
 	[x] Create complete suite (first draft) of failing Protractor tests based on feature files
   
-[-] Iteration 3: e2e MVP (unstyled, no server calls) - get all protractor tests passing but will look crap and use local data  
+[-] Iteration 4: e2e MVP (unstyled, no server calls) - get all protractor tests passing but will look crap and use faked data  
 	[x] home.feature
 	[x] viewCardSelection.feature
 	[x] navigateToCardDetail.feature
@@ -18,12 +18,12 @@
 	[] viewCardDetails.feature
 	- should delete the "Jon Snow" card from my collection has a pretty weak test at the moment - maybe navigate back to the selection view and see that its missing?
 
-[] Iteration 4: e2e MVP no styles - add in real data
+[] Iteration 5: e2e MVP no styles (still unstyled, make real server calls)
 	[] viewCardSelection.feature
 	[] viewCardDetails.feature
 	[] tearUpCard.feature
 
-[] Iteration 5: complete MVP by adding styles
+[] Iteration 6: complete MVP by adding styles
   
 [] Unsorted  
 	[] Responsive  
@@ -34,7 +34,6 @@
 	[] Push to Github pages  
 	[] enable deeplinking by implementing HTML5 pushstate (or just use a HashLocationStrategy)
 		- re-add deep link in card selection page file and re-add navigateTo override in home page file if we implement pushstate and allow for deep linking
-	- swap chrome for phantomjs for unit tests
 	- e2e tests need to be 1 command not 2
 	-	implement linting in Vim
 	- possibly change my build setup as follows: https://github.com/angular/angular-cli#proxy-to-backend
