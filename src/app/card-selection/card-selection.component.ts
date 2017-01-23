@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CardData } from '../card-data';
+import { CardsService } from '../cards.service';
 
 @Component({
   selector: 'app-card-selection',
@@ -7,28 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardSelectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cardsService: CardsService) { }
 
   ngOnInit() {
+		this.getCardsData();
   }
 
   title: String = 'Card Selection';
+	cardsData: CardData[];
 	
-	// TODO: use real data
-	// TODO: no test - this is temporary
-	cardsData : any[] = [
-		{name: 'Jon Snow', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO1', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO2', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO3', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO4', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO5', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO6', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO7', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO8', imageUrl: 'assets/images/jon_snow.jpg'},
-		{name: 'TODO9', imageUrl: 'assets/images/jon_snow.jpg'}
-	];
-
+	getCardsData() {
+		return this.cardsService.getCards().subscribe(
+			data => {
+				this.cardsData = data;
+			},
+			err => console.log(err)
+		);
+	}
+		
 	hyphenate(value: String) : String {
 		return value.replace(/ /g, '-');
 	}

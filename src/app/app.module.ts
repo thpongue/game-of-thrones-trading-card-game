@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CardSelectionComponent } from './card-selection/card-selection.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CardDetailComponent } from './card-detail/card-detail.component';
+import { CardsService } from './cards.service';
+import { CardData } from './card-data';
 
 const ROUTES: Routes = [
   {
@@ -37,7 +39,7 @@ const ROUTES: Routes = [
 		RouterModule.forRoot(ROUTES)
   ],
 	exports: [RouterModule],
-  providers: [],
+  providers: [CardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

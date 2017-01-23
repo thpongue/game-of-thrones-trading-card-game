@@ -1,9 +1,15 @@
 ul {
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 li {
-    display: inline-block;
-    vertical-align: top;
-		width: 140px;
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	padding: 10px;
+}
+
+.Name {
+	text-align: center;
+	height: 40px;
 }

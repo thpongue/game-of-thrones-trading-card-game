@@ -6,6 +6,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { CardSelectionComponent } from './card-selection.component';
 
+import { CardsService } from '../cards.service';
+
 describe('CardSelectionComponent', () => {
   let component: CardSelectionComponent;
   let fixture: ComponentFixture<CardSelectionComponent>;
@@ -13,7 +15,8 @@ describe('CardSelectionComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CardSelectionComponent ],
-			schemas: [ NO_ERRORS_SCHEMA ] // ignore custom directives in template since we are not unit testing these
+			schemas: [ NO_ERRORS_SCHEMA ], // ignore custom directives in template since we are not unit testing these
+			providers: [ CardsService ] // TODO: mock this once we start doing real work with this service
     })
     .compileComponents();
   }));

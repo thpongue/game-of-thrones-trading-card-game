@@ -20,6 +20,7 @@
 
 [-] Iteration 5: e2e MVP no styles (still unstyled, make real server calls)
 	[-] viewCardSelection.feature
+		- proper centering would be better
 	[-] viewCardDetails.feature
 	[] tearUpCard.feature
 
@@ -38,3 +39,4 @@
 	-	implement linting in Vim
 	- possibly change my build setup as follows: https://github.com/angular/angular-cli#proxy-to-backend
 		- then we can have the express project as a seperate repo and add it as a submodule
+	- mock the CardService once we start doing real work with it
