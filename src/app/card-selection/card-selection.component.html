@@ -3,7 +3,7 @@
 </h2>
 
 <ul id="Cards">
-	<li *ngFor="let cardData of cardsData" class="Card" [attr.id]="hyphenate(cardData.Name)" [routerLink]="['/card-detail']" [queryParams]="{id: cardData.Id}">
+	<li *ngFor="let cardData of cardsData" class="Card" [attr.id]="hyphenate(cardData.Name)" [routerLink]="['/card-detail', {Id: cardData.Id}]">
 		<p class="Name">{{cardData.Name}}</p>
 		<img [src]="cardData.imageUrlSmall" alt="cardData.Name" height="100" width="100"> 
 	</li>

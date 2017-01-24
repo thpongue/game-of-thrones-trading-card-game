@@ -8,7 +8,7 @@ export class CardDetail {
   }
 
   getCharacterName() {
-    return $('#CharacterName').getText().then(text => {
+    return $('#Name').getText().then(text => {
 			return text;
 		})
   }

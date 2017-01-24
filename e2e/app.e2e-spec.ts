@@ -25,6 +25,10 @@ describe('Game Of Thrones Trading Card Game', () => {
 			page.navigateTo();
 		});
 
+		it('Should show me my card selection', () => {
+			expect(page.getHeading()).toEqual('Card Selection');
+		})
+
 		it('It Should show All 10 cards', () => {
 			expect(page.getCardCount()).toEqual(10);
 		})
@@ -36,7 +40,7 @@ describe('Game Of Thrones Trading Card Game', () => {
 		});
 
 		it('It Should include a small image of Jon Snow', () => {
-			page.hasImage('assets/images/jon_snow.jpg').then((val) => {
+			page.hasImage('assets/images/jon_snow100x100.jpg').then((val) => {
 				expect(val).toBe(true);
 			})
 		});
@@ -57,16 +61,10 @@ describe('Game Of Thrones Trading Card Game', () => {
 				})
 			})
 
-			xit('Should show the name: "Jon Snow"', () => {
-				expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
-			})
-
-			xit('Should show age: "25"', () => {
-				expect(pageNavigatedTo.getCharacterAge()).toEqual('Jon Snow');
-			})
-
 			xit('Should show a large image of Jon Snow', () => {
-				expect(pageNavigatedTo.getCharacterImageUrl()).toEqual('JonSnow.jpg');
+				pageNavigatedTo.getCharacterImageUrl().then(character => {
+					expect(character).toEqual('assets/images/jon_snow500x500.jpg');
+				})
 			})
 			
 			describe('When: I select the "card selection" option', () => {

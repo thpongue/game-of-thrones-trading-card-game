@@ -4,6 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { CardDetailComponent } from './card-detail.component';
+import { Observable } from 'rxjs/Rx';
+import { ActivatedRoute } from '@angular/router';
+import { CardsService } from '../cards.service';
 
 describe('CardDetailComponent', () => {
   let component: CardDetailComponent;
@@ -11,7 +14,11 @@ describe('CardDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardDetailComponent ]
+      declarations: [ CardDetailComponent ],
+			providers: [
+			{ provide: ActivatedRoute, useValue: { 'card-detail': Observable.from([{ 'Id': 1 }]) } },
+			CardsService // TODO: mock this once we start doing real work with this service
+			]
     })
     .compileComponents();
   }));

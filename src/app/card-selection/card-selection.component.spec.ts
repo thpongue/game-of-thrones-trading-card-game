@@ -6,6 +6,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { CardSelectionComponent } from './card-selection.component';
 
+import { ActivatedRoute } from '@angular/router';
 import { CardsService } from '../cards.service';
 
 describe('CardSelectionComponent', () => {

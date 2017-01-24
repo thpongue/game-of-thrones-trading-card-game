@@ -1,4 +1,4 @@
-import { browser, $, $$ } from 'protractor';
+import { browser, $, $$, by } from 'protractor';
 
 export class CardSelection {
   navigateTo() {
@@ -11,12 +11,6 @@ export class CardSelection {
 
   getHeading() {
     return $('#Heading').getText().then(text => {
-			return text;
-		})
-  }
-
-  getCharacterName() {
-    return $('#CharacterName').getText().then(text => {
 			return text;
 		})
   }
@@ -45,9 +39,12 @@ export class CardSelection {
 		}
 	}
 
+	// match any part of the string since we need to match relative urls
 	private filterByImageUrl(matchText) {
 		return (elements) => {
-			return elements.$$('a[href*="+imageUrl+"]');
+			return elements.all(by.tagName('img')).getAttribute('src').then(text => {
+				return text.toString().match(new RegExp(matchText));
+			})
 		}
 	}
 	
