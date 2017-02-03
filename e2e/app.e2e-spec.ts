@@ -5,85 +5,74 @@ import { CardDetail } from './card_detail.po';
 describe('Game Of Thrones Trading Card Game', () => {
 
 	describe('When: I navigate to the root url', () => {
-		let page: Home;
-
 		beforeEach(() => {
-			page = new Home();
-			page.navigateTo();
+			Home.NavigateTo();
 		});
 
 		it('Should redirect me to my card selection', () => {
-			expect(page.getHeading()).toEqual('Card Selection');
+			console.log(Home.HasHeading);
+			expect(Home.HasHeading('Card Selection')).toBe(true);
 		})
 	});
 
 	describe('Given: I am viewing my card selection', () => {
-		let page: CardSelection;
 
 		beforeEach(() => {
-			page = new CardSelection();
-			page.navigateTo();
+			CardSelection.NavigateTo();
 		});
 
 		it('Should show me my card selection', () => {
-			expect(page.getHeading()).toEqual('Card Selection');
+			expect(CardSelection.HasHeading('Card Selection')).toBe(true);
 		})
 
-		it('It Should show All 10 cards', () => {
-			expect(page.getCardCount()).toEqual(10);
+		it('It Should show all 10 cards', () => {
+			expect(CardSelection.HasCardCount(10)).toBe(true);
 		})
 		
 		it('It Should include a card named "Jon Snow"', () => {
-			page.hasCard('Jon Snow').then((val) => {
-				expect(val).toBe(true);
-			})
+			expect(CardSelection.HasCard('Jon Snow')).toBe(true);
 		});
 
 		it('It Should include a small image of Jon Snow', () => {
-			page.hasImage('assets/images/jon_snow100x100.jpg').then((val) => {
-				expect(val).toBe(true);
-			})
+			expect(CardSelection.HasImage('assets/images/jon_snow100x100.jpg')).toBe(true);
 		});
 		
 		describe('When: I select the Jon Snow card', () => {
-			let pageNavigatedTo: CardDetail;
-
 			beforeEach((done) => {
-				pageNavigatedTo = new CardDetail();
-				page.selectCard('Jon-Snow').then(() => {
+				CardSelection.SelectCard('Jon-Snow').then(() => {
 					done();
 				})
 			});
 
-			it('Should navigate to the card details for "Jon Snow"', () => {
-				pageNavigatedTo.getCharacterName().then(character => {
-					expect(character).toEqual('Jon Snow');
-				})
+			it('Should show me the card details', () => {
+				expect(CardDetail.HasHeading('Card Detail')).toBe(true);
 			})
 
-			xit('Should show a large image of Jon Snow', () => {
-				pageNavigatedTo.getCharacterImageUrl().then(character => {
-					expect(character).toEqual('assets/images/jon_snow500x500.jpg');
-				})
+			it('Should navigate to the card details for "Jon Snow"', () => {
+				expect(CardDetail.HasName('Jon Snow')).toBe(true);
+			})
+
+			it('Should show a large image of Jon Snow', () => {
+				expect(CardDetail.HasImage('assets/images/jon_snow500x500.jpg')).toBe(true);
 			})
 			
 			describe('When: I select the "card selection" option', () => {
 				beforeEach(() => {
-					pageNavigatedTo.selectCardSelection();
+					CardDetail.SelectCardSelection();
 				});
 
 				xit('Should navigate to my card selection', () => {
-					expect(pageNavigatedTo.getCharacterName()).toEqual('Jon Snow');
+					//expect(CardDetail.GetCharacterName()).toEqual('Jon Snow');
 				})
 			});
 			
 			describe('When: I select the "tear up card" option', () => {
 				beforeEach(() => {
-					pageNavigatedTo.selectTearUpCard();
+					CardDetail.SelectTearUpCard();
 				});
 
 				xit('Should delete the "Jon Snow" card from my collection', () => {
-					expect(pageNavigatedTo.getCharacterName()).toBeNull();
+					//expect(CardDetail.GetCharacterName()).toBeNull();
 				})
 			});
 		});

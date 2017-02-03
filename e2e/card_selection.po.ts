@@ -1,56 +1,43 @@
 import { browser, $, $$, by } from 'protractor';
+import { Utils } from './Utils.po';
 
 export class CardSelection {
-  navigateTo() {
+
+	// public
+
+  static NavigateTo() {
     return browser.get('/');
   }
 
-	selectCard(characterName: String) {
+	static HasHeading(headingName) {
+    return $('#Heading').getText().then(text => {
+			return text === headingName;
+		})
+	}
+
+  static HasCardCount(expected) {
+		return this.GetCards().count().then(count => {
+			return count === expected;
+		})
+  }
+	
+	static HasCard(characterName: String) {
+		return this.GetCards().filter(Utils.FilterByText(characterName)).then(Utils.IsFound())
+	}
+
+	static HasImage(imageUrl: String) {
+		return this.GetCards().filter(Utils.FilterByImageUrl(imageUrl)).then(Utils.IsFound());
+	}
+
+	static SelectCard(characterName: String) {
     return $('#'+characterName).click();
 	}
 
-  getHeading() {
-    return $('#Heading').getText().then(text => {
-			return text;
-		})
-  }
 
-  getCardCount() {
-		return this.getCardsArray().count();
-  }
+	// private
 	
-	hasCard(characterName: String) {
-		return this.getCardsArray().filter(this.filterByText(characterName)).then(this.isFound())
-	}
-
-	hasImage(imageUrl: String) {
-		return this.getCardsArray().filter(this.filterByImageUrl(imageUrl)).then(this.isFound());
-	}
-	
-	private getCardsArray() {
+	private static GetCards() {
 		return $$('#Cards .Card');
 	}
 	
-	private filterByText(matchText) {
-		return (elements) => {
-			return elements.getText().then(text => {
-				return text === matchText;
-			});
-		}
-	}
-
-	// match any part of the string since we need to match relative urls
-	private filterByImageUrl(matchText) {
-		return (elements) => {
-			return elements.all(by.tagName('img')).getAttribute('src').then(text => {
-				return text.toString().match(new RegExp(matchText));
-			})
-		}
-	}
-	
-	private isFound() {
-		return (elements) => {
-			return elements.length > 0;
-		}
-	}
 }

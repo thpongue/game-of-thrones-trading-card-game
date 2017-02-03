@@ -1,35 +1,36 @@
-import { $ } from 'protractor';
+import { $, $$, element } from 'protractor';
+import { Utils } from './Utils.po';
 
 export class CardDetail {
-  getHeading() {
-    return $('#Heading').getText().then(text => {
-			return text;
-		})
-  }
-
-  getCharacterName() {
-    return $('#Name').getText().then(text => {
-			return text;
-		})
-  }
-
-  getCharacterAge() {
-    return $('#CharacterAge').getText().then(text => {
-			return text;
-		})
-  }
 	
-	getCharacterImageUrl() {
-    return $('#CharacterImageUrl').getText().then(text => {
-			return text;
+	// public
+
+	static HasHeading(headingName) {
+    return $('#Heading').getText().then(text => {
+			return text === headingName;
 		})
 	}
 
-	selectCardSelection() {
+	static HasName(characterName: String) {
+		return this.GetCard().filter(Utils.FilterByText(characterName)).then(Utils.IsFound())
+	}
+
+	static HasImage(imageUrl: String) {
+		return this.GetCard().filter(Utils.FilterByImageUrl(imageUrl)).then(Utils.IsFound());
+	}
+	
+	static SelectCardSelection() {
     return $('#CardSelection').click();
 	}
 
-	selectTearUpCard() {
+	static SelectTearUpCard() {
     return $('#TearUpCard').click();
+	}
+
+
+	// private
+
+	private static GetCard() {
+		return $$('#Card');
 	}
 }
